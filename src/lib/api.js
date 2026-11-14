@@ -46,6 +46,7 @@ async function request(path, { method = 'GET', body, form, raw } = {}) {
 
 export const api = {
   login: (email, password) => request('/api/auth/login', { method: 'POST', body: { email, password } }),
+  signup: (body) => request('/api/auth/signup', { method: 'POST', body }),
   me: () => request('/api/auth/me'),
 
   upload: (file) => { const f = new FormData(); f.append('file', file); return request('/api/client/documents', { method: 'POST', form: f }) },
